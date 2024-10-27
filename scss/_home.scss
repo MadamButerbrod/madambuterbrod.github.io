@@ -1,0 +1,71 @@
+@use "vars" as v;
+@use "breakpoints" as bp;
+
+
+#hm_stats {
+    padding: 10px 20px;
+    @include bp.l{
+        flex-basis: 52.77%;
+    }
+}
+.stats_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        "left_data right_data"
+        "left_label right_label";
+    gap: 0px 5px;
+}
+
+.main_data {
+    grid-area: left_data;
+    justify-self: end;
+    align-self: end;
+    font-size: 5rem;
+    font-weight: bold;
+}
+.sec_data {
+    grid-area: right_data;
+    align-self: end;
+    font-size: 2rem;
+    line-height: 4rem;
+}
+.main_label {
+    grid-area: left_label;
+    justify-self: end;
+}
+.sec_label {
+    grid-area: right_label;
+}
+#hm_current_order {
+    flex-basis: 61.77%;
+    @include bp.l {
+        flex-basis: 23.61%;
+    }
+    #next_order_btn {
+        order: 3;
+        @include bp.l {
+            order: 4;
+        }
+    }
+    #cancel_order_btn {
+        order: 4;
+        @include bp.l {
+            order: 1;
+        }
+    }
+    #no_next_order_btn {
+        order: 5;
+        @include bp.l {
+            order: 2;
+        }
+    }
+    .space {
+        @include bp.l{
+            order: 3;
+            flex-basis: 15%;
+        }
+    }
+}
+

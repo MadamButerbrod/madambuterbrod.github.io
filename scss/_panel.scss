@@ -1,0 +1,23 @@
+@use "vars" as v;
+$min-font-size: 150pt;
+#panel_container {
+    height: 100vh;
+    overflow: hidden;
+    // cursor: none;
+}
+#panel {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: $min-font-size;
+    .arrow {
+        flex-basis: 11%;
+    }
+    img {
+        min-height: 80pt;
+    }
+    .message {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

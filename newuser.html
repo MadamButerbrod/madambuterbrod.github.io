@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <title>New user</title>
+</head>
+<body>
+    <div id="user_email">
+        <label for="u_email_input">Įvesk vartotojo el. pašto adresą</label>
+        <input type="email" name="email" id="u_email_input">
+    </div>
+    <div id="user_role">
+        <label for="u_role_select">Įvesk vartotojo rolę</label>
+        <select name="role" id="u_role_select">
+            <option value="admin">Admin</option>
+            <option value="desk">Desk</option>
+            <option value="gate">Gate</option>
+        </select>
+    </div>
+    <div id="user_operation">
+        <label for="u_operation_select">Įvesk vartotojo operaciją</label>
+        <select name="operation" id="u_operation_select">
+            <option value="A">Operacija A</option>
+            <option value="B">Operacija B</option>
+            <option value="C">Operacija C</option>
+        </select>
+    </div>
+    <button id="sub_user">OK</button>
+    <script src="./js/admin.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

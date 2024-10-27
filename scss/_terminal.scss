@@ -1,0 +1,35 @@
+@use "vars" as v;
+@use "breakpoints" as bp;
+
+#trm_last_order {
+    flex-grow: 30;
+    justify-content: end;
+    @include bp.l{
+        order: 2;
+        flex-basis: 23.61%;
+        justify-content: center;
+    }
+}
+#trm_service_list {
+    flex-basis: 61.77%;
+    @include bp.l {
+        order: 1;
+        flex-basis: 52.77%;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_list {
+    min-width: 61.77%;
+    @include bp.l {
+        min-width: 30%;
+        @include v.btn_container;
+    }
+}
+
+.fade {
+    color: v.$muted-color;
+}

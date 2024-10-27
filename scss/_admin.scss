@@ -1,0 +1,78 @@
+@use "vars" as v;
+@use "breakpoints" as bp;
+
+.admin.content {
+    @include bp.l {
+        flex-grow: 1000;
+    }
+    overflow-y: scroll;
+}
+
+.admin.gen_label {
+    margin-left: 3%;
+}
+
+.admin.list {
+    display: flex;
+    flex-direction: column;
+    li {
+        border-radius: 10px;
+        &:nth-child(even) {
+            background-color: v.$darker-color;
+        }
+        button {
+            @media (hover:hover) {
+                &:hover .list_icon img {
+                    filter: v.$svgfilter;
+                }
+            }
+            display: flex;
+            gap: 5%;
+        }
+    }
+}
+
+.admin.person.svg {
+    width: 16px;
+}
+
+.list_icon {
+    @include bp.l {
+        margin-left: 3%;
+    }
+}
+
+.list_item_title {
+    min-width: 81%;
+    text-align: left;
+}
+
+.li_more_btn {
+    @include bp.l {
+        margin-right: 15%;
+    }
+}
+
+.new_item {
+    position: fixed;
+    bottom: 4%;
+    @include bp.l {
+        right: 3%;
+        display: initial !important;
+    }
+    right: 4%;
+    svg {
+        transition: 100ms;
+        fill: v.$hl-color;
+        @media (hover:hover) {
+            &:hover {
+                fill: v.$darker-hl-color;
+            }
+        }
+        @media (hover:none) {
+            &:active {
+                fill: v.$darker-hl-color;
+            }
+        }
+    }
+}

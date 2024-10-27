@@ -1,0 +1,252 @@
+@use "panel";
+@use "home";
+@use "admin";
+@use "terminal";
+@use "index";
+@use "vars" as v;
+@use "breakpoints" as bp;
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url(Roboto-Medium.ttf);
+}
+
+// Androido chromas prideda savo mygtukų animacijas, 
+// Androido chromas skaičiuoja aukštį su savo adreso lauku, dėl to langas atsidaro su scrollu
+// androido firefox renkasi pirmiau perkrauti puslapį, o ne scrollinti sąrašu, 
+// mobile nav neuždengia buvusių elementų, o sustumia juos
+
+body {
+    background-color: v.$bg-color-1;
+    font-family: Roboto-Medium, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    + li {
+        margin-top: 8px;
+    }
+}
+
+h1, h2, h3 {
+    margin: 0px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    color: white;
+    margin: 0px 0px 8px;
+}
+.gen_label {
+    margin-bottom: 8px;
+    @include bp.l {
+        margin-bottom: 16px;
+    }
+}
+input {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    border-width: 0px;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    padding: 12px 24px;
+    + .btn {
+        margin-top: 8px;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: inherit;
+    &.mobile {
+        overflow: hidden;
+    }
+    @include bp.l {
+        flex-direction: row;
+    }
+    >* {
+        padding: 10px;
+    }
+}
+
+.fscreen.wrapper {
+    height: 100vh;
+    width: 100vw;
+}
+
+.hide {
+    display: none;
+    @include bp.l {
+        display: initial !important;
+    }
+}
+
+.show {
+    @include bp.l {
+        display: none !important;
+    }
+}
+
+nav {
+    box-sizing: border-box;
+    display: grid;
+    align-content: start;
+    grid-template-areas: 
+        "title  menu-btn"
+        "menu   menu";
+    button {
+        justify-self: end;
+    }
+    &.mobile {
+        min-height: calc(100% - 20px);
+    }
+    background-color: inherit;
+    @include bp.l {
+        grid-template-areas: 
+        "title"
+        "menu";
+        background-color: v.$darker-color;
+        border-radius: 0px 20px 20px 0px;
+    }
+    >* {
+        padding: 10px 20px;
+    }    
+}
+
+.nav.title {
+    font-size: 0.6rem;
+}
+
+.nav.close {
+    display: none;
+}
+
+.nav.hide {
+    grid-area: menu;
+    justify-self: start;
+    >* {
+        padding: 10px 0px;
+    }
+}
+
+@mixin btn_animation($target, $color) {
+    @media (hover:hover) {
+        &:hover {
+            #{$target}: $color;
+        }
+    }
+    @media (hover:none) {
+        &:active {
+            #{$target}: $color;
+        }
+    }
+}
+
+.btn {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    padding: 12px 24px;
+    transition: 100ms;
+    + .btn {
+        margin-top: 8px;
+    }
+}
+
+.btn.primary {
+    background-color: v.$hl-color;
+    color: white;
+    border-width: 0px;
+    &.inactive {
+        @include v.disabled-box-btn;
+    }
+    @include btn_animation(background-color, v.$darker-hl-color);
+}
+
+.btn.secondary {
+    background-color: inherit;
+    color: v.$hl-color;
+    border-width: 1px;
+    border-style: solid;
+    border-color: v.$hl-color;
+    &.disabled {
+        @include v.disabled-box-btn;
+    }
+    @media (hover:hover) {
+        &:hover {
+            border-color: v.$muted-hl-color;
+            color: v.$muted-hl-color;
+        }
+    }
+    @media (hover:none) {
+        &:active {
+            border-color: v.$muted-hl-color;
+            color: v.$muted-hl-color;
+        }
+    }
+}
+
+.btn.main {
+    background-color: v.$hl-color;
+    color: white;
+    border-width: 0px;
+    font-size: 1.625rem;
+    padding: 24px 48px;
+    &.disabled {
+        @include v.disabled-box-btn;
+    }
+    @include btn_animation(background-color, v.$darker-hl-color);
+}
+
+.btn.tertiary {
+    background-color: inherit;
+    border: none;
+    color: white;
+    &.disabled {
+        @include v.disabled-link-btn;
+    }
+    @include btn_animation(color, v.$muted-hl-color);
+}
+
+.order_panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    @include bp.l {
+        justify-content: center;
+    }
+    .stats_column{
+        order: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .main_data, .sec_data, .reg_data {
+            align-self: center;
+            line-height: inherit;
+            text-align: center;        
+        }
+    }
+}
